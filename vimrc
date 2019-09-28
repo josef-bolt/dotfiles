@@ -1,7 +1,18 @@
 "general mappings
 let mapleader = ","
-nnoremap <Leader><space>    :noh<CR>
-nnoremap <Leader>s          :Ag<CR>
+nnoremap <silent> <Leader><space>    :noh<CR>
+nnoremap <silent> <Leader>s          :Ag<CR>
+nnoremap <silent> <Leader>v          :vsp<CR>
+nnoremap <silent> <Leader>h          :sp<CR>
+
+"compile and execute kotlin files
+nnoremap <Leader>m :!kotlinc % -include-runtime -d %:r.jar<CR> <Bar> :! java -jar %:r.jar<CR>
+
+"tmux navigation
+nnoremap <c-l>              <c-w>l
+nnoremap <c-k>              <c-w>k
+nnoremap <c-j>              <c-w>j
+nnoremap <c-h>              <c-w>h
 
 "fzf config
 nmap <Leader>f :GFiles<CR>
@@ -48,6 +59,7 @@ inoremap {}     {}
 let g:deoplete#enable_at_startup = 1
 
 call plug#begin('~/.vim/plugged')
+Plug 'lervag/vimtex'
 Plug 'mmozuras/vim-whitespace'
 Plug 'udalov/kotlin-vim'
 Plug '/usr/local/opt/fzf'
