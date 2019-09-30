@@ -48,6 +48,8 @@ set t_Co=256 "May not be necessary?
 
 let g:pymode_python = 'python3'
 
+set clipboard=unnamedplus "Set default clipboard to system clipboard
+
 autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on startup
 
 "Auto closing paired characters
