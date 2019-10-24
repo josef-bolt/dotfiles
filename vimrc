@@ -19,6 +19,10 @@ nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+"nerdtree config
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 set nocompatible "Prevents distro specific issues
 filetype indent plugin on "Determine filetype for appropriate indentations
 syntax on "Enable syntax highlighting
@@ -46,21 +50,21 @@ set expandtab
 
 set t_Co=256 "May not be necessary?
 
-let g:pymode_python = 'python3'
+" Speed improvements
+set re=1 "use older version of regex engine
+set ttyfast
+set lazyredraw
 
-set clipboard=unnamedplus "Set default clipboard to system clipboard
+set clipboard=unnamed "Set default clipboard to system clipboard
 
 autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on startup
-
-"Auto closing paired characters
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>0
-inoremap {{     {
-inoremap {}     {}
 
 let g:deoplete#enable_at_startup = 1
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'roman/golden-ratio'
+Plug 'scrooloose/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'mmozuras/vim-whitespace'
 Plug 'udalov/kotlin-vim'
