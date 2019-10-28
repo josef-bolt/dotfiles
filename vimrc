@@ -4,6 +4,7 @@ nnoremap <silent> <Leader><space>    :noh<CR>
 nnoremap <silent> <Leader>s          :Ag<CR>
 nnoremap <silent> <Leader>v          :vsp<CR>
 nnoremap <silent> <Leader>h          :sp<CR>
+nnoremap 0                           0w
 
 "compile and execute kotlin files
 nnoremap <Leader>m :!kotlinc % -include-runtime -d %:r.jar<CR> <Bar> :! java -jar %:r.jar<CR>
@@ -18,10 +19,6 @@ nnoremap <c-h>              <c-w>h
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-"nerdtree config
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 set nocompatible "Prevents distro specific issues
 filetype indent plugin on "Determine filetype for appropriate indentations
@@ -62,9 +59,10 @@ autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on sta
 let g:deoplete#enable_at_startup = 1
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'roman/golden-ratio'
-Plug 'scrooloose/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'mmozuras/vim-whitespace'
 Plug 'udalov/kotlin-vim'
