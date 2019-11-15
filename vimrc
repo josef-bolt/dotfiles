@@ -1,4 +1,5 @@
 "general mappings
+"git test
 let mapleader = ","
 nnoremap <silent> <Leader><space>    :noh<CR>
 nnoremap <silent> <Leader>s          :Ag<CR>
@@ -59,6 +60,8 @@ autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on sta
 let g:deoplete#enable_at_startup = 1
 
 call plug#begin('~/.vim/plugged')
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
