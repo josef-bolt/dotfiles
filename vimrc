@@ -1,13 +1,12 @@
 "general mappings
-"git test
 let mapleader = ","
 nnoremap <silent> <Leader><space>    :noh<CR>
 nnoremap <silent> <Leader>s          :Ag<CR>
 nnoremap <silent> <Leader>v          :vsp<CR>
 nnoremap <silent> <Leader>h          :sp<CR>
-nnoremap 0                           0w
+nnoremap 0                           ^
 
-"compile and execute kotlin files
+"compile and execute kotlin files. n.b. this is digusting
 nnoremap <Leader>m :!kotlinc % -include-runtime -d %:r.jar<CR> <Bar> :! java -jar %:r.jar<CR>
 
 "tmux navigation
@@ -21,6 +20,9 @@ nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" Ag not include matches in filename
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 set nocompatible "Prevents distro specific issues
 filetype indent plugin on "Determine filetype for appropriate indentations
 syntax on "Enable syntax highlighting
@@ -28,6 +30,10 @@ syntax on "Enable syntax highlighting
 set wildmenu "Better command line completion
 set showcmd "Show partial commands at bottom of screen
 set hlsearch "Highlighting search
+
+autocmd FileType scss setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType js setlocal shiftwidth=2 softtabstop=2 expandtab
 
 set ignorecase "Ignore case in searches, unless query contains uppercase
 set smartcase
@@ -41,7 +47,7 @@ set confirm
 set mouse=a
 set number
 set cmdheight=2
-
+set wrap
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -60,6 +66,9 @@ autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on sta
 let g:deoplete#enable_at_startup = 1
 
 call plug#begin('~/.vim/plugged')
+Plug 'pangloss/vim-javascript'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'tpope/vim-surround'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'tpope/vim-fugitive'
