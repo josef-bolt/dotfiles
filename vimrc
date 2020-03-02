@@ -1,10 +1,39 @@
-"general mappings
+call plug#begin('~/.vim/plugged')
+Plug 'rhysd/vim-textobj-ruby'
+Plug 'tpope/vim-endwise'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-surround'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
+Plug 'roman/golden-ratio'
+Plug 'lervag/vimtex'
+Plug 'mmozuras/vim-whitespace'
+Plug 'udalov/kotlin-vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+call plug#end()
+
 let mapleader = ","
 nnoremap <silent> <Leader><space>    :noh<CR>
 nnoremap <silent> <Leader>s          :Ag<CR>
 nnoremap <silent> <Leader>v          :vsp<CR>
 nnoremap <silent> <Leader>h          :sp<CR>
 nnoremap 0                           ^
+nnoremap <Leader>b :Buffers<CR>
 
 "compile and execute kotlin files. n.b. this is digusting
 nnoremap <Leader>m :!kotlinc % -include-runtime -d %:r.jar<CR> <Bar> :! java -jar %:r.jar<CR>
@@ -64,31 +93,3 @@ set clipboard=unnamed "Set default clipboard to system clipboard
 autocmd VimEnter * colo gruvbox "Hack because vim can't find colourscheme on startup
 
 let g:deoplete#enable_at_startup = 1
-
-call plug#begin('~/.vim/plugged')
-Plug 'pangloss/vim-javascript'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'tpope/vim-surround'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
-Plug 'roman/golden-ratio'
-Plug 'lervag/vimtex'
-Plug 'mmozuras/vim-whitespace'
-Plug 'udalov/kotlin-vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-call plug#end()
