@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/plugged')
-Plug 'rhysd/vim-textobj-ruby'
+Plug 'vim-scripts/Highlight-UnMatched-Brackets'
 Plug 'tpope/vim-endwise'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
@@ -63,6 +63,8 @@ set hlsearch "Highlighting search
 autocmd FileType scss setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType js setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType kt setlocal shiftwidth=2 softtabstop=2 expandtab
+
 
 set ignorecase "Ignore case in searches, unless query contains uppercase
 set smartcase
