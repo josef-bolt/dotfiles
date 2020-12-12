@@ -1,4 +1,8 @@
 call plug#begin('~/.vim/plugged')
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
 Plug 'vim-scripts/Highlight-UnMatched-Brackets'
 Plug 'tpope/vim-endwise'
 Plug 'pangloss/vim-javascript'
@@ -9,7 +13,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'roman/golden-ratio'
-Plug 'lervag/vimtex'
 Plug 'mmozuras/vim-whitespace'
 Plug 'udalov/kotlin-vim'
 Plug '/usr/local/opt/fzf'
@@ -17,14 +20,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 call plug#end()
 
 let mapleader = ","
@@ -49,7 +47,7 @@ nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Ag not include matches in filename
+"Exclude matches in filename
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 set nocompatible "Prevents distro specific issues
@@ -59,12 +57,6 @@ syntax on "Enable syntax highlighting
 set wildmenu "Better command line completion
 set showcmd "Show partial commands at bottom of screen
 set hlsearch "Highlighting search
-
-autocmd FileType scss setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType css setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType js setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType kt setlocal shiftwidth=2 softtabstop=2 expandtab
-
 
 set ignorecase "Ignore case in searches, unless query contains uppercase
 set smartcase
@@ -79,9 +71,13 @@ set mouse=a
 set number
 set cmdheight=2
 set wrap
-set shiftwidth=4
-set softtabstop=4
 set expandtab
+
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+autocmd FileType kotlin setlocal shiftwidth=4 softtabstop=4 expandtab
 
 set t_Co=256 "May not be necessary?
 
