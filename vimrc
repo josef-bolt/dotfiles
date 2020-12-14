@@ -72,6 +72,7 @@ set number
 set cmdheight=2
 set wrap
 set expandtab
+set noswapfile
 
 set shiftwidth=2
 set softtabstop=2
