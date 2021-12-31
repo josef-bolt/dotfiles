@@ -24,9 +24,13 @@ filetype detect
 
 let mapleader = ","
 nnoremap <silent> <Leader><space>    :noh<CR>
+"filesearch
 nnoremap <silent> <Leader>s          :Ag<CR>
+
+"screen splitting
 nnoremap <silent> <Leader>v          :vsp<CR>
 nnoremap <silent> <Leader>h          :sp<CR>
+
 nnoremap 0                           ^
 nnoremap <Leader>b :Buffers<CR>
 
@@ -53,6 +57,12 @@ if index(['ex', 'exs'], &filetype) == -1
   nnoremap <Leader>l :!mix format %<CR>
   nnoremap <Leader>L :!mix format --check-formatted <CR>
   nnoremap <Leader>c :!mix credo %<CR>
+endif
+
+"ruby
+if index(['rb'], &filetype) == -1
+  nnoremap <Leader>t :!rspec %<CR>
+  nnoremap <Leader>T :!rspec <CR>
 endif
 
 "fzf config"
