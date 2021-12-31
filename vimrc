@@ -17,7 +17,10 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'wincent/terminus'
 Plug 'elixir-editors/vim-elixir'
+Plug 'junegunn/seoul256.vim'
 call plug#end()
+
+filetype detect
 
 let mapleader = ","
 nnoremap <silent> <Leader><space>    :noh<CR>
@@ -29,12 +32,28 @@ nnoremap <Leader>b :Buffers<CR>
 
 "disables lint highlighting (still visible in gutter)
 let g:ale_set_highlights = 0
+let g:ale_hover_cursor = 0
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 
 "tmux navigation
 nnoremap <c-l>              <c-w>l
 nnoremap <c-k>              <c-w>k
 nnoremap <c-j>              <c-w>j
 nnoremap <c-h>              <c-w>h
+
+"git
+nnoremap <Leader>a :!git add %<CR>
+
+"elixir
+if index(['ex', 'exs'], &filetype) == -1
+  nnoremap <Leader>t :!mix test %<CR>
+  nnoremap <Leader>T :!mix test <CR>
+  nnoremap <Leader>l :!mix format %<CR>
+  nnoremap <Leader>L :!mix format --check-formatted <CR>
+  nnoremap <Leader>c :!mix credo %<CR>
+endif
 
 "fzf config"
 set rtp+=/usr/local/opt/fzf
@@ -74,6 +93,9 @@ set softtabstop=2
 set tabstop=2
 
 set t_Co=256 "May not be necessary?
+
+let g:seoul256_background = 235
+colo seoul256
 
 " Speed improvements
 set re=1 "use older version of regex engine

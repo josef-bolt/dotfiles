@@ -14,6 +14,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+alias vim="nvim"
+
 #Rails crap
 alias rdbm="bin/rails db:migrate"
 alias rdbr="bin/rails db:rollback"
